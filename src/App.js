@@ -8,13 +8,14 @@ class App extends Component {
 
     userInput: "",
     repos: [],
+    repoNotFound: false,
 
   }
 
 
   handleInput = (event) => {
 
-    console.log(event.target.value);
+
     this.setState({
        userInput: event.target.value,
     })
@@ -24,15 +25,31 @@ class App extends Component {
 
   fetchRepo = (repo) => {
 
-    repo = this.state.userInput;    
+    if(this.state.userInput === "") {
+      return;
+    }
+
+    repo = this.state.userInput; 
+
     
     fetch(`https://api.github.com/search/repositories?q=${repo}`)
     .then(res => {
       return res.json();
     }).then(res => {
       console.log(res)
+     if(res.total_count === 0) {
        this.setState({
-         repos : res.items
+         repoNotFound: true,
+       })
+     }
+
+     let sortedResult = res.items.sort((a,b)=> {
+          return b.forks_count - a.forks_count;
+     })
+
+       this.setState({
+         repos : sortedResult,
+         repoNotFound: false,
        })
     })
 
@@ -40,14 +57,17 @@ class App extends Component {
 
 
   render() {
+
+
     return (
       <div className="App">
         <div className="header-wrapper">
             <h1>Github Repo Finder</h1>
-            <input onChange={this.handleInput}></input>
+            <small>Display first 30 repos sorted by the number of forks</small>
+            <input onChange={this.handleInput} placeholder="i.e tetris, hangman etc"></input>
             <button onClick={this.fetchRepo}>Find Repo!</button>
         </div>
-        <Repos repos={this.state.repos}/>
+        <Repos repos={this.state.repos} repoNotFound={this.state.repoNotFound}/>
 
       </div>
     );

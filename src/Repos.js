@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 
-const Repos = ({ repos }) => {
+const Repos = ({ repos, repoNotFound }) => {
 
-    if (repos.length === 0) return "";
-
+    if(repoNotFound) return ( <div className="repos-not-found"><h2>Sorry, no repos were found!</h2></div>);
+    if(repos.length === 0) return "";
+   
     return (
 
         <div className="repos-wrapper"> {
@@ -13,7 +14,7 @@ const Repos = ({ repos }) => {
                 return (
                     <div className="repo-div">
                         <div className="grid-1">
-                            <img src={repo.owner.avatar_url} alt="user-logo" style={{ width: "60px" }} />
+                            <a href={repo.owner.html_url}><img src={repo.owner.avatar_url} alt="user-logo" style={{ width: "60px" }} /></a>
                         </div>
                         <div className="grid-2">
                             <ul>
@@ -28,6 +29,7 @@ const Repos = ({ repos }) => {
                                 <li>Number of forks: {repo.forks_count}</li>
                                 <li>Stargazers: {repo.stargazers_count}</li>
                                 <li>Number of issues: {repo.open_issues_count}</li>
+                                <li><a href={`https://github.com/${repo.full_name}`}><button>{repo.full_name}</button></a></li>
                             </ul>
                         </div>
                     </div>
@@ -36,6 +38,7 @@ const Repos = ({ repos }) => {
             })}
         </div>
     )
+  
 }
 
 
