@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
 const Repos = ({ repos, repoNotFound }) => {
@@ -10,9 +10,9 @@ const Repos = ({ repos, repoNotFound }) => {
 
         <div className="repos-wrapper"> {
 
-            repos.map(repo => {
+            repos.map((repo, i) => {
                 return (
-                    <div className="repo-div">
+                    <div className="repo-div" key={i}>
                         <div className="grid-1">
                             <a href={repo.owner.html_url}><img src={repo.owner.avatar_url} alt="user-logo" style={{ width: "60px" }} /></a>
                         </div>
