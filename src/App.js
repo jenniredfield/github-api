@@ -7,7 +7,7 @@ class App extends Component {
   state = {
 
     userInput: "",
-    respos: [],
+    repos: [],
 
   }
 
@@ -30,8 +30,9 @@ class App extends Component {
     .then(res => {
       return res.json();
     }).then(res => {
+      console.log(res)
        this.setState({
-         repos : res,
+         repos : res.items
        })
     })
 

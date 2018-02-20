@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Repos from './Repos.js'
+
 
 const Repos = ({repos}) => {
+
     
-    repos = repos.slice(0,10);
 
     return  repos.map(repo => {
         return (
