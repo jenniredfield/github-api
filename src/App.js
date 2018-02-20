@@ -42,8 +42,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Github Repo Finder</h1>
-        <div className="wrapper">
+        <div className="header-wrapper">
+            <h1>Github Repo Finder</h1>
             <input onChange={this.handleInput}></input>
             <button onClick={this.fetchRepo}>Find Repo!</button>
         </div>
