@@ -25,7 +25,7 @@ class App extends Component {
 
   fetchRepo = (repo) => {
 
-    console.log("hit")
+    
     if(this.state.userInput === "") {
       return;
     }
@@ -37,7 +37,7 @@ class App extends Component {
     .then(res => {
       return res.json();
     }).then(res => {
-      console.log(res)
+      // console.log(res)
      if(res.total_count === 0) {
        this.setState({
          repoNotFound: true,
@@ -64,7 +64,7 @@ class App extends Component {
       <div className="App">
         <div className="header-wrapper">
             <h1>Github Repo Finder</h1>
-            <small>Display first 30 repos sorted by the number of forks</small>
+            <small>Displays first 30 repos sorted by the number of forks</small>
     
               <input onChange={this.handleInput} onKeyPress={(event) => { if(event.key === 'Enter') this.fetchRepo() }} placeholder="i.e tetris, hangman etc"></input>
               <button onClick={this.fetchRepo}>Find Repo!</button>
