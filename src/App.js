@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Repos from './Repos.js'
 
 class App extends Component {
 
   state = {
 
     userInput: "",
+    respos: [],
 
   }
 
@@ -29,7 +30,9 @@ class App extends Component {
     .then(res => {
       return res.json();
     }).then(res => {
-      console.log(res);
+       this.setState({
+         repos : res,
+       })
     })
 
   }
@@ -43,7 +46,7 @@ class App extends Component {
             <input onChange={this.handleInput}></input>
             <button onClick={this.fetchRepo}>Find Repo!</button>
         </div>
-
+        <Repos repos={this.state.repos}/>
 
       </div>
     );
