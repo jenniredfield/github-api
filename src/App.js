@@ -20,15 +20,14 @@ class App extends Component {
 
   }
 
-  fetchRepo = (repo) => {
+  fetchRepo = () => {
 
     if (this.state.userInput === "") {
       return;
     }
 
-    repo = this.state.userInput;
 
-    fetch(`https://api.github.com/search/repositories?q=${repo}`)
+    fetch(`https://api.github.com/search/repositories?q=${this.state.userInput}`)
       .then(res => {
         return res.json();
       }).then(res => {
