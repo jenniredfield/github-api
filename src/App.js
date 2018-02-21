@@ -9,7 +9,7 @@ class App extends Component {
     userInput: "",
     repos: [],
     repoNotFound: false,
-
+    loading: false,
   }
 
   handleInput = (event) => {
@@ -26,6 +26,10 @@ class App extends Component {
       return;
     }
 
+    this.setState({
+      loading: true,
+    })
+
 
     fetch(`https://api.github.com/search/repositories?q=${this.state.userInput}`)
       .then(res => {
@@ -35,6 +39,7 @@ class App extends Component {
         if (res.total_count === 0) {
           this.setState({
             repoNotFound: true,
+            loading: false,
           })
         }
 
@@ -45,6 +50,7 @@ class App extends Component {
         this.setState({
           repos: sortedResult,
           repoNotFound: false,
+          loading: false,
         })
       })
 
@@ -62,7 +68,7 @@ class App extends Component {
           <button onClick={this.fetchRepo}>Find Repo!</button>
 
         </div>
-        <Repos repos={this.state.repos} repoNotFound={this.state.repoNotFound} />
+        <Repos repos={this.state.repos} repoNotFound={this.state.repoNotFound} loading={this.state.loading} />
 
       </div>
     );

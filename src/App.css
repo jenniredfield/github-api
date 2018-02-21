@@ -128,3 +128,39 @@ body {
   background: lightgray;
   cursor: pointer;
 }
+
+/***LOADING***/
+
+.loading {
+
+  width: 70%;
+  padding: 20px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+
+
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 2px solid lightgray;
+  border-bottom: 2px solid rgb(25, 119, 151);
+  animation: rotate 1s linear infinite;
+ 
+}
+
+@keyframes rotate {
+
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+
+}

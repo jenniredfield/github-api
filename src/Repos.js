@@ -1,8 +1,9 @@
 import React from 'react';
 
 
-const Repos = ({ repos, repoNotFound }) => {
+const Repos = ({ repos, repoNotFound, loading }) => {
 
+    if(loading) return ( <div className="loading"><div className="loader"></div></div>)
     if(repoNotFound) return ( <div className="repos-not-found"><h2>Sorry, no repos were found!</h2></div>);
     if(repos.length === 0) return "";
    
