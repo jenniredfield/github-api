@@ -164,3 +164,25 @@ body {
   }
 
 }
+
+@media only screen and (max-width: 600px) {
+
+  .repo-div  {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .grid-1 {
+    flex: 1 1 100%;
+
+  }
+
+  .grid-2 {
+    flex: 1 1 100%;
+  }
+
+
+  .grid-3 {
+    flex: 1 1 100%;
+  }
+
+}
