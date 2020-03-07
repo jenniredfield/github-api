@@ -1,12 +1,13 @@
-body, html {
+body,
+html {
   padding: 0;
   margin: 0;
 }
 
 body {
   background: #f4f4f4;
-  font-family: 'News Cycle', sans-serif;
-  color: #1D1F20;
+  font-family: "News Cycle", sans-serif;
+  color: #1d1f20;
 }
 
 /***HEADER ***/
@@ -22,7 +23,7 @@ body {
 }
 
 .header-wrapper h1 {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   margin: 5px;
 }
 
@@ -40,17 +41,15 @@ body {
 }
 
 .header-wrapper input:focus,
-.header-wrapper button:focus  {
+.header-wrapper button:focus {
   outline: none;
 }
 
 .header-wrapper button {
-
   background: lightblue;
   border-radius: 5px;
   border: none;
   padding: 5px 10px;
-
 }
 
 .header-wrapper button:hover {
@@ -74,9 +73,7 @@ body {
 }
 
 .repo-div {
-
   border-bottom: 1px solid lightgray;
-
 }
 
 .repo-div {
@@ -85,8 +82,6 @@ body {
   background: white;
 }
 
-
-
 .grid-1 {
   flex: 1 1 15%;
   display: flex;
@@ -94,29 +89,26 @@ body {
   justify-content: center;
 }
 
-
 .grid-1 a img {
   border-radius: 100%;
 }
-
 
 .grid-2 {
   flex: 2 1 60%;
 }
 
-
-.grid-2 ul, .grid-3 ul {
+.grid-2 ul,
+.grid-3 ul {
   padding: 0;
 }
 
 .grid-2 ul {
-
   padding-left: 5px;
-  
 }
 
-.grid-2 ul li, .grid-3 ul li {
-  list-style-type:  none;
+.grid-2 ul li,
+.grid-3 ul li {
+  list-style-type: none;
   padding: 5px;
 }
 
@@ -132,7 +124,6 @@ body {
 /***LOADING***/
 
 .loading {
-
   width: 70%;
   padding: 20px;
   margin: 0 auto;
@@ -141,48 +132,38 @@ body {
 }
 
 .loader {
-
-
   width: 30px;
   height: 30px;
   border-radius: 100%;
   border: 2px solid lightgray;
   border-bottom: 2px solid rgb(25, 119, 151);
   animation: rotate 1s linear infinite;
- 
 }
 
 @keyframes rotate {
-
-
   0% {
     transform: rotate(0deg);
   }
 
   100% {
-    transform: rotate(360deg)
+    transform: rotate(360deg);
   }
-
 }
 
 @media only screen and (max-width: 600px) {
-
-  .repo-div  {
+  .repo-div {
     flex-direction: column;
     padding: 20px;
   }
   .grid-1 {
     flex: 1 1 100%;
-
   }
 
   .grid-2 {
     flex: 1 1 100%;
   }
 
-
   .grid-3 {
     flex: 1 1 100%;
   }
-
 }

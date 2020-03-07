@@ -3,43 +3,39 @@ import './App.css';
 import Repos from './Repos.js';
 
 class App extends Component {
-
   state = {
-
     userInput: '',
     repos: [],
     repoNotFound: false,
-    loading: false,
-  }
+    loading: false
+  };
 
-  handleInput = (event) => {
-
+  handleInput = event => {
     this.setState({
-      userInput: event.target.value,
+      userInput: event.target.value
     });
-
-  }
+  };
 
   fetchRepo = () => {
-
     if (this.state.userInput === '') {
       return;
     }
 
     this.setState({
-      loading: true,
+      loading: true
     });
 
-
-    fetch(`https://api.github.com/search/repositories?q=${this.state.userInput}`)
+    fetch(
+      `https://api.github.com/search/repositories?q=${this.state.userInput}`
+    )
       .then(res => {
         return res.json();
-      }).then(res => {
-        // console.log(res)
+      })
+      .then(res => {
         if (res.total_count === 0) {
           this.setState({
             repoNotFound: true,
-            loading: false,
+            loading: false
           });
         }
 
@@ -50,26 +46,31 @@ class App extends Component {
         this.setState({
           repos: sortedResult,
           repoNotFound: false,
-          loading: false,
+          loading: false
         });
       });
-
-  }
+  };
 
   render() {
-
     return (
       <div className="App">
         <div className="header-wrapper">
           <h1>Github Repo Finder</h1>
           <small>Displays first 30 repos sorted by the number of forks</small>
-
-          <input onChange={this.handleInput} onKeyPress={(event) => { if (event.key === 'Enter') this.fetchRepo(); }} placeholder="i.e tetris, hangman etc"></input>
+          <input
+            onChange={this.handleInput}
+            onKeyPress={event => {
+              if (event.key === 'Enter') this.fetchRepo();
+            }}
+            placeholder="i.e tetris, hangman etc"
+          ></input>
           <button onClick={this.fetchRepo}>Find Repo!</button>
-
         </div>
-        <Repos repos={this.state.repos} repoNotFound={this.state.repoNotFound} loading={this.state.loading} />
-
+        <Repos
+          repos={this.state.repos}
+          repoNotFound={this.state.repoNotFound}
+          loading={this.state.loading}
+        />
       </div>
     );
   }
